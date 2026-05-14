@@ -1,0 +1,34 @@
+# Local scratch (notes, experiments)
+/tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# LangGraph default SQLite checkpoints (override with BLACKJACK_CHECKPOINT_DB)
+data/*.sqlite
+data/*.sqlite-*
+app/data/*.sqlite
+app/data/*.sqlite-*
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
