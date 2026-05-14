@@ -18,6 +18,10 @@ def _article_for_card_value(value: int) -> str:
     return "an" if value in (8, 11) else "a"
 
 
+def _total_suffix(hand: Hand) -> str:
+    return f" (total: {hand.total})"
+
+
 def _append_draw_narration(
     round_log: list[str],
     *,
@@ -28,16 +32,16 @@ def _append_draw_narration(
 ) -> None:
     if target_player_id == human_player_id:
         art = _article_for_card_value(card_value)
-        round_log.append(f"You drew {art} {card_value}.")
+        round_log.append(f"You drew {art} {card_value}.{_total_suffix(hand)}")
         if hand.is_bust():
-            round_log.append("Bust.")
+            round_log.append(f"Bust.{_total_suffix(hand)}")
         else:
             round_log.append("What's your next move?")
     else:
         label = seat_display_label(target_player_id)
-        round_log.append(f"{label} was dealt {card_value}.")
+        round_log.append(f"{label} was dealt {card_value}.{_total_suffix(hand)}")
         if hand.is_bust():
-            round_log.append(f"{label} busts.")
+            round_log.append(f"{label} busts.{_total_suffix(hand)}")
 
 
 def _append_stand_narration(
